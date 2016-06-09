@@ -1,0 +1,100 @@
+* {
+  margin: 0 auto;
+}
+
+#container {
+  height: 700px;
+  width: 700px;
+  border: 1px solid black;
+}
+
+.title {
+  text-align: center;
+  border: 1px solid black;
+  font-weight: bolder;
+}
+
+#gameboard {
+  height: 525px;
+  width: 700px;
+  border: 1px solid black;
+}
+
+#display {
+  height: 87.7px;
+  width: 700px;
+  border: 1px solid red;
+}
+
+#remain {
+  height: 20px;
+  width: 150px;
+  border: 1px solid blue;
+  text-align: left;
+  margin: 5px 5px 5px 20px;
+}
+
+#player {
+  height: 20px;
+  width: 150px;
+  border: 1px solid blue;
+  text-align: left;
+  margin: 5px 5px 5px 20px;
+}
+#comp {
+  height: 20px;
+  width: 150px;
+  border: 1px solid blue;
+  text-align: left;
+  margin: 5px 5px 5px 20px;
+}
+
+#btnshf {
+  height: 37px;
+  width: 160px;
+  margin: 24px 25px 0px -31px;
+}
+
+#btnnxt {
+  height: 37px;
+  width: 160px;
+}
+
+#compcarddown {
+  height: 135px;
+  width: 100px;
+  border: 2px solid blue;
+  margin: 15px 8px 8px 218px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#compcardup {
+  height: 135px;
+  width: 100px;
+  border: 2px solid red;
+  margin: -38px 8px 8px 331px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#playercardup {
+  height: 135px;
+  width: 100px;
+  border: 2px solid red;
+  margin: -4px 8px 8px 231px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#playercarddown {
+  height: 135px;
+  width: 100px;
+  border: 2px solid blue;
+  margin: -40px 8px 8px 342px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+
