@@ -8,10 +8,17 @@
   border: 1px solid black;
 }
 
+#header {
+  background-image: url('images/camouflage.png');
+}
+
 .title {
   text-align: center;
   border: 1px solid black;
   font-weight: bolder;
+  color: white;
+  margin-bottom: 0;
+  padding: 10px 0;
 }
 
 #gameboard {
