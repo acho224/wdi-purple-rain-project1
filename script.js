@@ -5,12 +5,12 @@ var K = 13;
 var A = 14;
 var suits = ["S", "H", "C", "D"];
 var value = [2,3,4,5,6,7,8,9,10,J,Q,K,A];
-
-
-
 fullDeck = [];
-shuffledDeck=[];
-
+pot=[]
+playerRemaining=0;
+compRemaining=0;
+compCards=[];
+playerCards=[];
 
 // Make array of full deck
 for (var i=0; i < suits.length; i++) {
@@ -18,20 +18,37 @@ for (var i=0; i < suits.length; i++) {
     fullDeck.push(value+suits[i]);
     })
   }
-$('#btnshf').click (shuffleDeck)
-
-
-
-
-
-
-
-
-
-
-
-
+$('#btnshf').click(shuffleDeck);
+$('#btnnxt').click(compareCards);
+// shuffle cards
+// after shuffling, split the deck in half and push to player/ comp array
+// need a counter for the cards remaining
 });
+
+
+// after splitting cards, set counter to 26 for player and comp
+// draw first card (index[0]) from player/ comp array
+// set counter -1 for both player/ comp
+function compareCards(){
+  pCard = playerCards.shift();
+  cCard = compCards.shift();
+  if (parseInt(pCard) > parseInt(cCard)){
+    playerCards.push(pCard);
+    playerCards.push(cCard);
+  } else if (parseInt(cCard) > parseInt(pCard)){
+      compCards.push(pCard);
+      compCards.push(cCard);
+  }
+  console.log(compCards);
+  console.log(playerCards);
+};
+// function to compare card value
+// player with the higher cards wins, card will be pushed to the back of winner's array
+// if tie, then "I declare war" and open 3 more cards and compare the 3rd card
+// set counter -3 for both player/ comp
+// clear cards after pushing to winner's array
+
+
 
 function shuffleDeck(){
   var i, k;
@@ -45,5 +62,14 @@ function shuffleDeck(){
     fullDeck[i] = fullDeck[k]; // fulldeck[0] = fullDeck[45];
     fullDeck[k] = temp;
   }
-  console.log(fullDeck);
+  // deal cards to player and computer
+  compCards= fullDeck.slice(0,26);
+  playerCards=fullDeck.slice(26);
+  playerRemaining=26
+  compRemaining=26
+  console.log(compCards);
+  console.log(playerCards);
+  console.log("Player Remaining: "+ playerRemaining, " Computer Remaining: "+ compRemaining)
+  $('#plcount').html(" " + playerRemaining);
+  $('#cpcount').html(" " + compRemaining);
 }
