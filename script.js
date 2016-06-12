@@ -1,28 +1,28 @@
 $(document).ready(function(){
-var J = 11;
-var Q = 12;
-var K = 13;
-var A = 14;
-var suits = ["S", "H", "C", "D"];
-var value = [2,3,4,5,6,7,8,9,10,J,Q,K,A];
-fullDeck = [];
-pot=[]
-playerRemaining=0;
-compRemaining=0;
-compCards=[];
-playerCards=[];
+  var J = 11;
+  var Q = 12;
+  var K = 13;
+  var A = 14;
+  var suits = ["S", "H", "C", "D"];
+  var value = [2,3,4,5,6,7,8,9,10,J,Q,K,A];
+  fullDeck = [];
+  pot=[]
+  playerRemaining=0;
+  compRemaining=0;
+  compCards=[];
+  playerCards=[];
 
-// Make array of full deck
-for (var i=0; i < suits.length; i++) {
-  value.forEach(function(value){
-    fullDeck.push(value+suits[i]);
-    })
-  }
-$('#btnshf').click(shuffleDeck);
-$('#btnnxt').click(compareCards);
-// shuffle cards
-// after shuffling, split the deck in half and push to player/ comp array
-// need a counter for the cards remaining
+  // Make array of full deck
+  for (var i=0; i < suits.length; i++) {
+    value.forEach(function(value){
+      fullDeck.push(value+suits[i]);
+      })
+    }
+  $('#btnshf').click(shuffleDeck);
+  $('#btnnxt').click(compareCards);
+  // shuffle cards
+  // after shuffling, split the deck in half and push to player/ comp array
+  // need a counter for the cards remaining
 });
 
 
@@ -32,13 +32,32 @@ $('#btnnxt').click(compareCards);
 function compareCards(){
   pCard = playerCards.shift();
   cCard = compCards.shift();
+  // potArray.push(pCard, cCard)
+  $('#playercardup').html(pCard);
+  $('#compcardup').html(cCard);
   if (parseInt(pCard) > parseInt(cCard)){
     playerCards.push(pCard);
     playerCards.push(cCard);
+    playerRemaining -=1;
+    playerRemaining += 2;
+    compRemaining -=1;
+    $('#plcount').html(playerRemaining);
+    $('#cpcount').html(compRemaining);
+
   } else if (parseInt(cCard) > parseInt(pCard)){
-      compCards.push(pCard);
-      compCards.push(cCard);
+    compCards.push(pCard);
+    compCards.push(cCard);
+    compRemaining -=1;
+    compRemaining +=2;
+    playerRemaining -=1;
+    $('#plcount').html(playerRemaining);
+    $('#cpcount').html(compRemaining);
   }
+  // else {
+  //   return tiebreaker();
+  // };
+
+  console.log("Player Remaining: "+ playerRemaining, " Computer Remaining: "+ compRemaining)
   console.log(compCards);
   console.log(playerCards);
 };
@@ -47,6 +66,16 @@ function compareCards(){
 // if tie, then "I declare war" and open 3 more cards and compare the 3rd card
 // set counter -3 for both player/ comp
 // clear cards after pushing to winner's array
+
+function tiebreaker(){
+  alert("We have a tie. \n THIS MEANS WAR!!!")
+// spit out 3 cards from each player into tie array
+// place all 10 cards (inluding "tie" cards) into pot array
+// winner will get all 10 cards into their array
+// winn
+};
+
+
 
 
 
@@ -67,9 +96,11 @@ function shuffleDeck(){
   playerCards=fullDeck.slice(26);
   playerRemaining=26
   compRemaining=26
+  console.log("Computer Cards:");
   console.log(compCards);
-  console.log(playerCards);
+  console.log("Player Card:");
+  console.log(playerCards)
   console.log("Player Remaining: "+ playerRemaining, " Computer Remaining: "+ compRemaining)
-  $('#plcount').html(" " + playerRemaining);
-  $('#cpcount').html(" " + compRemaining);
+  $('#plcount').html(playerRemaining);
+  $('#cpcount').html(compRemaining);
 }

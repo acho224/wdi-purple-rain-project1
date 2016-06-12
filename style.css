@@ -4,7 +4,7 @@
 
 #container {
   height: 700px;
-  width: 700px;
+  width: 800px;
   border: 1px solid black;
 }
 
@@ -23,20 +23,19 @@
 
 #gameboard {
   height: 525px;
-  width: 700px;
+  background-color: #2F7039;
   border: 1px solid black;
 }
 
 #display {
-  height: 87.7px;
-  width: 700px;
-  border: 1px solid red;
+background-color: #DBDBDB;
+height: 91px;
 }
 
 #remain {
+  font-weight: bold;
   height: 20px;
   width: 150px;
-  border: 1px solid blue;
   text-align: left;
   margin: 5px 5px 5px 20px;
 }
@@ -44,64 +43,90 @@
 #player {
   height: 20px;
   width: 150px;
-  border: 1px solid blue;
   text-align: left;
   margin: 5px 5px 5px 20px;
 }
 #comp {
   height: 20px;
   width: 150px;
-  border: 1px solid blue;
   text-align: left;
   margin: 5px 5px 5px 20px;
 }
-
+button{
+  background-color: #ffffff;
+}
 #btnshf {
   height: 37px;
   width: 160px;
   margin: 24px 25px 0px -31px;
 }
-
 #btnnxt {
   height: 37px;
   width: 160px;
 }
-
+.card{
+  height: 135px;
+  width: 100px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+}
 #compcarddown {
-  height: 135px;
-  width: 100px;
-  border: 2px solid blue;
-  margin: 15px 8px 8px 218px;
-  text-align: center;
-  border-radius: 10px;
+  border-color: blue;
+  margin: 15px 0 0 330px;
 }
-
 #compcardup {
-  height: 135px;
-  width: 100px;
-  border: 2px solid red;
-  margin: -38px 8px 8px 331px;
-  text-align: center;
-  border-radius: 10px;
+  border-color: red;
+  margin: -38px 0 0 450px;
+  float: left;
 }
-
+#compwarzone {
+  text-align: center;
+  margin: -63px 0 0 280px;
+  position: relative;
+}
+.tiecard{
+  display: inline-block;
+  border-color: red;
+  position: absolute;
+}
+#comptiecard2{
+  right: 120px;
+}
+#comptiecard3{
+  right: 80px;
+}
+#compwarcard{
+  right: 40px;
+}
+#playerwarzone{
+  position: relative;
+  clear: both;
+}
+#playertiecard1{
+  left:200px;
+}
+#playertiecard2{
+  left:160px;
+}
+#playertiecard3{
+  left:120px;
+}
+#playerwarcard{
+  left:80px;
+}
 #playercardup {
-  height: 135px;
-  width: 100px;
-  border: 2px solid red;
-  margin: -4px 8px 8px 231px;
-  text-align: center;
-  border-radius: 10px;
+  clear: both;
+  border-color: red;
+  margin-left: 280px;
 }
-
 #playercarddown {
-  height: 135px;
-  width: 100px;
-  border: 2px solid blue;
-  margin: -40px 8px 8px 342px;
-  text-align: center;
-  border-radius: 10px;
+  border-color: blue;
+  margin: -40px 0 0 400px;
 }
-
-
-
+#playerwarzone,
+#compwarzone{
+  display: none;
+}
