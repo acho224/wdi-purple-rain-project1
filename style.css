@@ -25,8 +25,16 @@
   height: 525px;
   background-color: #2F7039;
   border: 1px solid black;
+  position: relative;
 }
-
+#winnerstatus{
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000;
+  color: yellow;
+}
 #display {
 background-color: #DBDBDB;
 height: 91px;

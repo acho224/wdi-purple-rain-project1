@@ -11,6 +11,7 @@ $(document).ready(function(){
   compRemaining=0;
   compCards=[];
   playerCards=[];
+  tieCards=[];
 
   // Make array of full deck
   for (var i=0; i < suits.length; i++) {
@@ -30,12 +31,16 @@ $(document).ready(function(){
 // draw first card (index[0]) from player/ comp array
 // set counter -1 for both player/ comp
 function compareCards(){
+  $('#playerwarzone, #compwarzone').hide();
   pCard = playerCards.shift();
   cCard = compCards.shift();
   // potArray.push(pCard, cCard)
   $('#playercardup').html(pCard);
   $('#compcardup').html(cCard);
   if (parseInt(pCard) > parseInt(cCard)){
+    $('#winnerstatus h3').html("Player Wins");
+    $('#winnerstatus').fadeIn('slow');
+    $('#winnerstatus').fadeOut('slow');
     playerCards.push(pCard);
     playerCards.push(cCard);
     playerRemaining -=1;
@@ -45,6 +50,9 @@ function compareCards(){
     $('#cpcount').html(compRemaining);
 
   } else if (parseInt(cCard) > parseInt(pCard)){
+    $('#winnerstatus h3').html("Computer Wins");
+    $('#winnerstatus').fadeIn('slow');
+    $('#winnerstatus').fadeOut('slow');
     compCards.push(pCard);
     compCards.push(cCard);
     compRemaining -=1;
@@ -52,11 +60,9 @@ function compareCards(){
     playerRemaining -=1;
     $('#plcount').html(playerRemaining);
     $('#cpcount').html(compRemaining);
-  }
-  // else {
-  //   return tiebreaker();
-  // };
-
+  } else {
+    return tiebreaker(pCard,cCard);
+  };
   console.log("Player Remaining: "+ playerRemaining, " Computer Remaining: "+ compRemaining)
   console.log(compCards);
   console.log(playerCards);
@@ -67,19 +73,55 @@ function compareCards(){
 // set counter -3 for both player/ comp
 // clear cards after pushing to winner's array
 
-function tiebreaker(){
-  alert("We have a tie. \n THIS MEANS WAR!!!")
-// spit out 3 cards from each player into tie array
+function tiebreaker(pFirstCard,cFirstCard){
+  alert("We have a tie. \n THIS MEANS WAR!!!");
+  var compWarCards = compCards.splice(0,3);
+  var playerWarCards = playerCards.splice(0,3);
+  var hiddenWarCards = compWarCards.concat(playerWarCards);
+  console.log(hiddenWarCards);
+  cLastWarCard = compCards.shift();
+  pLastWarCard = playerCards.shift();
+  $('#compwarcard').html(cLastWarCard);
+  $('#playerwarcard').html(pLastWarCard);
+
+  $('#playerwarzone, #compwarzone').css('display','block');
+
+  if (parseInt(pLastWarCard) > parseInt(cLastWarCard)){
+    $('#winnerstatus h3').html("Player Wins");
+    $('#winnerstatus').fadeIn('slow');
+    $('#winnerstatus').fadeOut('slow');
+    playerCards = playerCards.concat(hiddenWarCards);
+    playerCards.push(pLastWarCard, cLastWarCard, pFirstCard, cFirstCard);
+    playerRemaining -=5;
+    playerRemaining +=10;
+    compRemaining -=5;
+    $('#plcount').html(playerRemaining);
+    $('#cpcount').html(compRemaining);
+  } else if (parseInt(cLastWarCard) > parseInt(pLastWarCard)){
+    $('#winnerstatus h3').html("Computer Wins");
+    $('#winnerstatus').fadeIn('slow');
+    $('#winnerstatus').fadeOut('slow');
+    compCards = compCards.concat(hiddenWarCards);
+    compCards.push(pLastWarCard, cLastWarCard, pFirstCard, cFirstCard);
+    compRemaining -=5;
+    compRemaining += 10;
+    playerRemaining -=5;
+    $('#plcount').html(playerRemaining);
+    $('#cpcount').html(compRemaining);
+  }
+
+// spit out 3 cards from each player into tieCards array
 // place all 10 cards (inluding "tie" cards) into pot array
 // winner will get all 10 cards into their array
-// winn
+
 };
 
 
 
-
-
 function shuffleDeck(){
+  $('#playerwarzone, #compwarzone').hide();
+  $('#playercardup').html(' ');
+  $('#compcardup').html(' ');
   var i, k;
   var temp;
   // credit: http:..
