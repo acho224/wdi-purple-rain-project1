@@ -62,6 +62,9 @@ function compareCards(){
   } else {
     return tiebreaker(pCard,cCard);
   };
+
+checkRemaining();
+
   console.log("Player Remaining: "+ playerRemaining, " Computer Remaining: "+ compRemaining)
   console.log(compCards);
   console.log(playerCards);
@@ -72,7 +75,18 @@ function compareCards(){
 // set counter -3 for both player/ comp
 // clear cards after pushing to winner's array
 
+function checkRemaining(){
+  if (compCards.length === 0){
+    alert('You WIN!!');
+  } else if (playerCards.length === 0){
+    alert('You LOSE!!');
+  }
+};
+
+
 function tiebreaker(pFirstCard,cFirstCard){
+  $('#playercardup').css("background-image", "url('images/cards/"+ pFirstCard +".png')");
+  $('#compcardup').css("background-image", "url('images/cards/"+ cFirstCard +".png')");
   alert("We have a tie. \n THIS MEANS WAR!!!");
   var compWarCards = compCards.splice(0,3);
   var playerWarCards = playerCards.splice(0,3);
@@ -80,8 +94,8 @@ function tiebreaker(pFirstCard,cFirstCard){
   console.log(hiddenWarCards);
   cLastWarCard = compCards.shift();
   pLastWarCard = playerCards.shift();
-  $('#compwarcard').html(cLastWarCard);
-  $('#playerwarcard').html(pLastWarCard);
+  $('#compwarcard').css("background-image", "url('images/cards/"+ cLastWarCard +".png')");
+  $('#playerwarcard').css("background-image", "url('images/cards/"+ pLastWarCard +".png')");
 
   $('#playerwarzone, #compwarzone').css('display','block');
 

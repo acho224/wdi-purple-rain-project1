@@ -116,6 +116,10 @@ button{
 }
 #compwarcard{
   right: 40px;
+  background-size: cover;
+  background-size: 93%;
+  background-position: center;
+  background-re
 }
 #playerwarzone{
   position: relative;
@@ -132,6 +136,10 @@ button{
 }
 #playerwarcard{
   left:80px;
+  background-size: cover;
+  background-size: 93%;
+  background-position: center;
+  background-re
 }
 #playercardup {
   clear: both;
