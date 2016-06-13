@@ -139,7 +139,7 @@ button{
   background-size: cover;
   background-size: 93%;
   background-position: center;
-  background-re
+  background-repeat: no-repeat;
 }
 #playercardup {
   clear: both;
