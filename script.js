@@ -34,9 +34,8 @@ function compareCards(){
   $('#playerwarzone, #compwarzone').hide();
   pCard = playerCards.shift();
   cCard = compCards.shift();
-  // potArray.push(pCard, cCard)
-  $('#playercardup').html(pCard);
-  $('#compcardup').html(cCard);
+  $('#playercardup').css("background-image", "url('images/cards/"+ pCard +".png')");
+  $('#compcardup').css("background-image", "url('images/cards/"+ cCard +".png')");
   if (parseInt(pCard) > parseInt(cCard)){
     $('#winnerstatus h3').html("Player Wins");
     $('#winnerstatus').fadeIn('slow');
@@ -124,7 +123,7 @@ function shuffleDeck(){
   $('#compcardup').html(' ');
   var i, k;
   var temp;
-  // credit: http:..
+  // credit: http://www.brainjar.com/js/cards/default2.asp
   // replace what is currently in position i with what is in position k (randomly chosen), then replace position k with what was in position i (now saved as var temp)
   for (var i=0 ; i < fullDeck.length ; i++){
     var k = Math.floor(Math.random() * fullDeck.length);
